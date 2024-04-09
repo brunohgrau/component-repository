@@ -9,14 +9,17 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
 
-  args: {},
+  args: {
+    text: "Confort Food",
+  },
 } satisfies Meta<typeof Badge>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    text: "Badge",
+export const Default: Story = {};
+export const DarkTheme: Story = {
+  parameters: {
+    theme: "dark",
   },
 };

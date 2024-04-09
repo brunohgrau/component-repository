@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Body } from "../typography/Body";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,6 +31,10 @@ const getReview = (rating?: number) => {
 
 export const Review = ({ rating }: ReviewProps) => (
   <>
-    <Wrapper>{getReview(rating)}</Wrapper>
+    <Wrapper>
+      <Body type="span" size="S" className="review-text">
+        {getReview(rating)}
+      </Body>
+    </Wrapper>
   </>
 );

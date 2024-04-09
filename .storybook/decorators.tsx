@@ -5,6 +5,8 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../src/styles/theme";
 import { BrowserRouter } from "react-router-dom";
 import { initialize, mswDecorator } from "msw-storybook-addon";
+import { Provider as StoreProvider } from "react-redux";
+import { store } from "../src/app-state";
 
 initialize();
 
@@ -28,4 +30,17 @@ const withTheme: Decorator = (Story, context) => {
   );
 };
 
-export const GlobalDecorators = [withTheme, withRouter, mswDecorator];
+const withStore: Decorator = (Story) => {
+  return (
+    <StoreProvider store={store}>
+      <Story />
+    </StoreProvider>
+  );
+};
+
+export const GlobalDecorators = [
+  withTheme,
+  withRouter,
+  mswDecorator,
+  withStore,
+];

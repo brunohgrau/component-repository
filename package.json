@@ -59,5 +59,8 @@
     "prop-types": "^15.8.1",
     "storybook": "^8.0.6",
     "webpack": "^5.91.0"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }

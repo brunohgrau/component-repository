@@ -6,7 +6,8 @@ import { darkTheme, lightTheme } from "../src/styles/theme";
 import { BrowserRouter } from "react-router-dom";
 import { initialize, mswDecorator } from "msw-storybook-addon";
 import { Provider as StoreProvider } from "react-redux";
-import { store } from "../src/app-state";
+import { rootReducer } from "../src/app-state";
+import { configureStore } from "@reduxjs/toolkit";
 
 initialize();
 
@@ -30,7 +31,12 @@ const withTheme: Decorator = (Story, context) => {
   );
 };
 
-const withStore: Decorator = (Story) => {
+const withStore: Decorator = (Story, { parameters }) => {
+  const store = configureStore({
+    reducer: rootReducer,
+    preloadedState: parameters.store?.initialState,
+  });
+
   return (
     <StoreProvider store={store}>
       <Story />
